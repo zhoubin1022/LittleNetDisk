@@ -25,7 +25,6 @@ object UploadUtil {
     private const val lineEnd="\r\n"
     private const val CONTENT_TYPE="multipart/form-data"*/
     private const val requestUrl = "http://37x366u444.wicp.vip/OnlineAlbum_Jessie_war/image/upload"
-
     /*fun uploadImage(context: Context,fid: Int, file: File, requestUrl: String): Int{
         var res=0
         var result=""
@@ -101,7 +100,6 @@ object UploadUtil {
         // Toast.makeText(, "res=$res", Toast.LENGTH_SHORT)
         return res
     }*/
-
     fun uploadImageFile(context: Context,result:String,fid: String, imageFile: File,callback:Callback){
         var mediaType=""
         if(imageFile.name.contains("png")||imageFile.name.contains("PNG"))

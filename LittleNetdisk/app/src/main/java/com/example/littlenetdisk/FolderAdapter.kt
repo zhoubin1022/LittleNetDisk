@@ -28,7 +28,7 @@ class FolderAdapter(private val context: MainActivity, private var folderList:Ar
         val holder=ViewHolder(view)
         holder.itemView.setOnClickListener {
             val position=holder.adapterPosition
-            val file:Folder=folderList[position]
+            val  file:Folder=folderList[position]
             val prefs=context.getSharedPreferences("LogActivity",Context.MODE_PRIVATE)
             val result=prefs.getString("cookie","")
             var fFid = if(position==0){

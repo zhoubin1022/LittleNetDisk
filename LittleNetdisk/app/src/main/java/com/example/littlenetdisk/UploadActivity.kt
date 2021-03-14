@@ -129,11 +129,8 @@ class UploadActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(this, "上传的文件有问题", Toast.LENGTH_SHORT).show()
                 }*/
-
-
         }
     }
-
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -156,7 +153,6 @@ class UploadActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun getBitmapFromUri(uri: Uri) = contentResolver.openFileDescriptor(uri, "r")?.use {
         BitmapFactory.decodeFileDescriptor(it.fileDescriptor)
     }
@@ -545,10 +541,8 @@ class UploadActivity : AppCompatActivity() {
     }*/
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun uriToFileQ(context: Context, uri: Uri): File? =
-        if (uri.scheme == ContentResolver.SCHEME_FILE)
-            File(requireNotNull(uri.path))
+        if (uri.scheme == ContentResolver.SCHEME_FILE) File(requireNotNull(uri.path))
         else if (uri.scheme == ContentResolver.SCHEME_CONTENT) {
-            //把文件保存到沙盒
             var cursor:Cursor?=null
             val contentResolver = context.contentResolver
             val displayName = run {
@@ -557,7 +551,7 @@ class UploadActivity : AppCompatActivity() {
                     if(it.moveToFirst()) it.getString(cursor!!.getColumnIndex(OpenableColumns.DISPLAY_NAME))
                     else null
                 }
-            }?:"${System.currentTimeMillis()}${Random.nextInt(0, 9999)}.${MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri))}"
+            }
             cursor?.close()
             val ios = contentResolver.openInputStream(uri)
             if (ios != null) {

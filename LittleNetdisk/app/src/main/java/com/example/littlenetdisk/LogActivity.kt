@@ -90,7 +90,6 @@ class LogActivity : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
     }
-
     override fun onResume() {
         super.onResume()
         val prefs =getPreferences(Context.MODE_PRIVATE)

@@ -6,6 +6,7 @@ import android.media.Image
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -70,6 +71,8 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call, response: Response) {
                     val responseData = response.body?.string()
                     if (responseData != null) {
+                        Log.d("tag",responseData)
+                        //Toast.makeText(this@MainActivity,responseData,Toast.LENGTH_SHORT).show()
                         try {
                             val typeOf=object :TypeToken<ArrayList<com.example.littlenetdisk.Image>>() {}.type
                             imageList= Gson().fromJson<ArrayList<com.example.littlenetdisk.Image>>(responseData,typeOf)
@@ -125,7 +128,7 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 //搜索代码(联系后端数据库查找符合的内容并显示)
-                /*if(query==null||query==""){
+                if(query==null||query==""){
                     Toast.makeText(this@MainActivity,"搜索内容不能为空",Toast.LENGTH_SHORT).show()
                     searchView.focusable=View.NOT_FOCUSABLE
                     return false
@@ -140,7 +143,7 @@ class MainActivity : AppCompatActivity() {
                 searchView.focusable=View.NOT_FOCUSABLE
                 val intent=Intent(this@MainActivity,SearchResultActivity::class.java)
                 intent.putExtra("result",resultList)
-                startActivity(intent)*/
+                startActivity(intent)
                 return false
             }
 

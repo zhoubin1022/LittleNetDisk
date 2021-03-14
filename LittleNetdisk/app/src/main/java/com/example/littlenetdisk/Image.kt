@@ -23,6 +23,7 @@ class Image() :Serializable,Parcelable{
         visited = parcel.readInt()
         album = parcel.readString().toString()
         path = parcel.readString().toString()
+        uploadTime=parcel.readParcelable(null)
         size = parcel.readLong()
         fid = parcel.readInt()
     }

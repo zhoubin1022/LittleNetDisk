@@ -18,11 +18,19 @@ class ShowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show)
-        val intent=Intent()
         val bitmap=intent.getParcelableExtra<Bitmap>("bitmap")
         val path=intent.getStringExtra("path")
-        val type=intent.getStringExtra("type")
-        var format:Bitmap.CompressFormat?=null
+        //val type=intent.getStringExtra("type")
+        val imageName=intent.getStringExtra("imageName")
+        val uploadName=intent.getStringExtra("uploadName")
+        //val uploadTime=intent.getStringExtra("uploadTime")
+        //Toast.makeText(this,"path=$path,imageName=$imageName,uploadName=$uploadName",Toast.LENGTH_SHORT).show()
+        findViewById<TextView>(R.id.uploadName).text=uploadName
+        findViewById<TextView>(R.id.imageName).text=imageName
+        findViewById<TextView>(R.id.downloadPath).text=path
+        //findViewById<TextView>(R.id.uploadTime).text=uploadTime
+        imageShow.setImageBitmap(bitmap)
+        /*var format:Bitmap.CompressFormat?=null
         if(type=="jpg"||type=="jpeg"){
             format=Bitmap.CompressFormat.JPEG
         }else if(type=="png"){
@@ -50,6 +58,6 @@ class ShowActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.downloadPath).text=path
             findViewById<TextView>(R.id.downloadTime).text=SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss").format(file.lastModified())
             Toast.makeText(this,"图片下载成功",Toast.LENGTH_SHORT).show()
-        }
+        }*/
     }
 }
